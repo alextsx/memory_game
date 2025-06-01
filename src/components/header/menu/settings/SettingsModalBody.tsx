@@ -1,16 +1,30 @@
-import React from 'react';
+import { SettingsInput } from './SettingsInput';
 
 export const SettingsModalBody = ({ onSave }: { onSave: () => void }) => {
   return (
     <div className="modal-body">
-      <div className="settings-option">
-        <label htmlFor="pair-cards">Number of pair of cards</label>
-        <input id="pair-cards" name="pair-cards" defaultValue={12} min={2} max={20} />
-      </div>
-      <div className="settings-option">
-        <label htmlFor="countdown-time">Countdown time (sec.)</label>
-        <input id="countdown-time" name="countdown-time" defaultValue={60} min={10} max={60} />
-      </div>
+      <SettingsInput
+        label="Number of pair of cards"
+        id="pair-cards"
+        type="number"
+        min={2}
+        max={20}
+      />
+      <SettingsInput
+        label="Countdown time (sec.)"
+        id="countdown-time"
+        type="number"
+        min={10}
+        max={60}
+      />
+      <SettingsInput
+        label="Allowed mistakes"
+        id="allowed-mistakes"
+        type="number"
+        min={0}
+        max={10}
+      />
+      <SettingsInput label="Username" id="username" type="text" maxLength={20} />
       <button className="save-button" onClick={onSave}>
         Save Settings
       </button>

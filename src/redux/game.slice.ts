@@ -73,4 +73,4 @@ export const gameSlice = createSlice({
 });
 
 //actions
-export const {} = gameSlice.actions;
+export const { resetGame, startGame, endGame, reduceTimer } = gameSlice.actions;

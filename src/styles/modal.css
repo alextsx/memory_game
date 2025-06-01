@@ -33,7 +33,6 @@
   z-index: 2;
 
   width: 300px;
-  height: 275px;
 
   background: var(--white);
   border-radius: 35px;
@@ -63,7 +62,6 @@
   gap: 15px;
 
   width: 300px;
-  height: 201px;
 }
 
 .modal-header h2 {
@@ -106,16 +104,31 @@
 .modal-body .settings-option input {
   padding: 10px 0px;
   text-align: center;
-
   width: 50px;
   height: 41px;
-
-  /* White */
   border: 1px solid var(--gray-medium);
   border-radius: 10px;
   font-weight: 500;
   font-size: 18px;
   line-height: 21px;
+}
+
+.modal-body .settings-option input[type='number'] {
+  width: 50px;
+}
+
+.modal-body .settings-option input[type='text'] {
+  width: 150px;
+}
+
+.modal-body .settings-option input[type='number']::-webkit-outer-spin-button,
+.modal-body .settings-option input[type='number']::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.modal-body .settings-option input[type='number'] {
+  -moz-appearance: textfield;
 }
 
 .modal-body .save-button {

@@ -10,7 +10,7 @@ export const settingsInitialState: SettingsStateType = {
 };
 
 //selectors
-export const selectSettings = (state: RootState) => state.settings;
+export const selectSettings = (state: RootState): SettingsStateType => state.settings;
 
 //will need to use useDebounced for the inputs so we dont perma rerender
 const reducers = {
@@ -31,11 +31,11 @@ const reducers = {
   }
 };
 
-export const gameSlice = createSlice({
+export const settingsSlice = createSlice({
   name: 'settings',
   initialState: settingsInitialState,
   reducers
 });
 
 //actions
-export const {} = gameSlice.actions;
+export const {} = settingsSlice.actions;

@@ -1,0 +1,16 @@
+.game-board {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  padding: 75px 25px;
+  gap: 20px;
+
+  width: 1080px;
+  height: 640px;
+
+  background: var(--gray-light);
+  border-radius: 50px;
+}

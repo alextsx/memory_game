@@ -1,12 +1,18 @@
-import { uniqueAnimalEmojis } from '@/constants/emojis';
+import GameBoard from '@/components/GameBoard';
+import { Header } from '@/components/header/Header';
 
-console.log(uniqueAnimalEmojis);
+//TODO css class for this
+//TODO check h1-h3 usage in figma project
+
 const MemoryGame = () => {
   return (
-    <div>
-      <header>logo, timer, mistakes and buttons</header>
-      <main>the game board with cards</main>
-    </div>
+    <>
+      <div id="modal-root" />
+      <div className="flex flex-col items-center justify-center gap-[30px] p-[50px] pt-[30px]">
+        <Header />
+        <GameBoard />
+      </div>
+    </>
   );
 };
 

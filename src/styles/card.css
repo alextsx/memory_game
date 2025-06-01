@@ -1,0 +1,48 @@
+.card {
+  width: 100px;
+  height: 150px;
+  background: var(--white);
+  box-shadow: 0px 2px 1px var(--color-card-shadow);
+  border-radius: 10px;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+}
+
+/* backside */
+.card svg {
+  position: absolute;
+  width: 81px;
+  height: 130px;
+  left: 4px;
+  top: 5px;
+}
+
+/* front */
+.card:has(.card-front) {
+  padding: 6px;
+}
+
+.card-front {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 27px 10px;
+  gap: 10px;
+
+  width: 88px;
+  height: 138px;
+
+  background: linear-gradient(180deg, rgba(220, 220, 220, 0.1) 0%, rgba(223, 190, 156, 0.1) 100%);
+  border-radius: 8px;
+}
+
+.card-front span {
+  font-weight: 400;
+  font-size: 60px;
+  line-height: 70px;
+}

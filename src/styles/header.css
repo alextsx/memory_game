@@ -11,6 +11,15 @@
   height: 119px;
 }
 
+.game-header > img {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  cursor: pointer;
+}
+
 /* menu */
 .menubar {
   display: flex;
@@ -62,12 +71,16 @@
   width: 195px;
   height: 65px;
   line-height: 65px;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
 }
 
 .timer {
   position: relative;
   padding: 0px 15px 0px 0px;
-  width: 77px;
 
   color: var(--bs-red);
   font-weight: 900;
@@ -92,6 +105,7 @@
   font-weight: 700;
   font-size: 18px;
   line-height: 13px;
+  white-space: nowrap;
 }
 
 .matches-mistakes_container span:first-of-type {

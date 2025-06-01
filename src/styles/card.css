@@ -10,9 +10,22 @@
   justify-content: center;
   align-items: center;
   padding: 5px;
+  cursor: pointer;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
 }
 
 /* backside */
+
+.card .card-back {
+  position: relative;
+  width: 81px;
+  height: 130px;
+}
+
 .card svg {
   position: absolute;
   width: 81px;
@@ -24,6 +37,7 @@
 /* front */
 .card:has(.card-front) {
   padding: 6px;
+  cursor: default;
 }
 
 .card-front {

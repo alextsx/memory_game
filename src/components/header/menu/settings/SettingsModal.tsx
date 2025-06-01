@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Portal } from '@/hocs/portal';
+import { Portal } from '@/hocs/Portal';
 import { SettingsModalBody } from './SettingsModalBody';
 import { SettingsModalHeader } from './SettingsModalHeader';
 import { SettingsModalTrigger } from './SettingsModalTrigger';

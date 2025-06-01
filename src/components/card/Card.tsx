@@ -7,7 +7,6 @@ import { CardFront } from './CardFront';
 
 type CardProps = {
   animalId: number;
-  //  isMatched: boolean;
 };
 
 export const Card = ({ animalId }: CardProps) => {
@@ -16,15 +15,26 @@ export const Card = ({ animalId }: CardProps) => {
 
   return (
     <motion.div
-      className="card"
       onClick={() => setIsFlipped(!isFlipped)}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      initial={false}
-      /* shadow on hover */
-      animate={{ boxShadow: isHovered ? '0 1px 4px rgba(0, 0, 0, 0.2)' : 'none' }}
+      className="card"
+      animate={{
+        rotateY: isFlipped ? 180 : 0,
+        boxShadow: isHovered ? '0 1px 4px rgba(0, 0, 0, 0.2)' : 'none'
+      }}
+      initial={{ rotateY: 0 }}
+      transition={{ duration: 0.4 }}
     >
-      {isFlipped ? <CardFront animalId={animalId} /> : <CardBack isHovered={isHovered} />}
+      {/* Back Card (shows first) */}
+      <div className="card-flip">
+        <CardBack isHovered={isHovered} />
+      </div>
+
+      {/* Front Card (shows after flip) */}
+      <div className="card-flip">
+        <CardFront animalId={animalId} />
+      </div>
     </motion.div>
   );
 };

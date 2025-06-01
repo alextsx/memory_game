@@ -16,11 +16,14 @@
   -khtml-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
+  perspective: 1000px;
+  transform-style: preserve-3d;
 }
 
 /* backside */
 
 .card .card-back {
+  background: var(--color-white);
   position: relative;
   width: 81px;
   height: 130px;
@@ -59,4 +62,21 @@
   font-weight: 400;
   font-size: 60px;
   line-height: 70px;
+}
+
+.card-flip {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-flip:first-child {
+  transform: rotateY(0deg);
+}
+.card-flip:last-child {
+  transform: rotateY(180deg);
 }

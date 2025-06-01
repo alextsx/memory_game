@@ -1,6 +1,7 @@
-export type Cards = {
+import { SettingsStateType } from './settings.types';
+
+export type Card = {
   emojiId: number;
-  index: number;
   isFlipped: boolean;
   isMatched: boolean;
 };
@@ -8,12 +9,11 @@ export type Cards = {
 export type GameStateType = {
   matches: number;
   mistakes: number;
-  timeLimit: number;
-  pairs: number;
+  timeLeft: number;
 
   isGameOver: boolean;
   isGameStarted: boolean;
 
-  cards: Cards[];
+  cards: Card[];
   flippedCardIndexes: number[];
-};
+} & Pick<SettingsStateType, 'allowedMistakes' | 'username'>;

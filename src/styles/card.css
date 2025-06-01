@@ -40,7 +40,6 @@
 /* front */
 .card:has(.card-front) {
   padding: 6px;
-  cursor: default;
 }
 
 .card-front {

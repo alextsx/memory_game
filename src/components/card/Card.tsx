@@ -1,6 +1,7 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
+import { motion } from 'framer-motion';
 import { CardBack } from './CardBack';
 import { CardFront } from './CardFront';
 
@@ -13,19 +14,17 @@ export const Card = ({ animalId }: CardProps) => {
   const [isFlipped, setIsFlipped] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
 
-  useEffect(() => {
-    setIsHovered(Math.random() < 0.5);
-  }, []);
-
-  useEffect(() => {
-    if (animalId > 10) {
-      setIsFlipped(Math.random() < 0.5);
-    }
-  }, [animalId]);
-
   return (
-    <div className="card">
+    <motion.div
+      className="card"
+      onClick={() => setIsFlipped(!isFlipped)}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      initial={false}
+      /* shadow on hover */
+      animate={{ boxShadow: isHovered ? '0 1px 4px rgba(0, 0, 0, 0.2)' : 'none' }}
+    >
       {isFlipped ? <CardFront animalId={animalId} /> : <CardBack isHovered={isHovered} />}
-    </div>
+    </motion.div>
   );
 };

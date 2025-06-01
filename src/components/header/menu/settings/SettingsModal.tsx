@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Portal } from '@/hocs/Portal';
 import { SettingsModalBody } from './SettingsModalBody';
@@ -16,6 +16,33 @@ export const SettingsModal = () => {
     console.log('Settings saved');
     setIsOpen(false);
   };
+
+  //add event listener to close modal on escape key press
+  useEffect(() => {
+    const handleEscape = (event: KeyboardEvent) => {
+      if (event.key === 'Escape' && isOpen) {
+        setIsOpen(false);
+      }
+    };
+    window.addEventListener('keydown', handleEscape);
+
+    //cleanup event listener
+    return () => {
+      window.removeEventListener('keydown', handleEscape);
+    };
+  }, [isOpen]);
+
+  //add scroll block when modal is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.classList.add('scroll-block');
+    } else {
+      document.body.classList.remove('scroll-block');
+    }
+    return () => {
+      document.body.classList.remove('scroll-block');
+    };
+  }, [isOpen]);
 
   return (
     <>

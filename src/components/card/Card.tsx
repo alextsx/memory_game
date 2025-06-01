@@ -9,6 +9,7 @@ type CardProps = {
   animalId: number;
 };
 
+//TODO card styling is not right, the back card isnt centered as expected
 export const Card = ({ animalId }: CardProps) => {
   const [isFlipped, setIsFlipped] = useState(false);
   const [isHovered, setIsHovered] = useState(false);

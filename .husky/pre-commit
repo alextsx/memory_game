@@ -1,3 +1,2 @@
-npx tsc --noEmit && npx eslint --fix . && npx prettier --write .
-
+npx tsc --noEmit
 npx lint-staged

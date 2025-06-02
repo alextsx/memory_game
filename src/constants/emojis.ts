@@ -135,6 +135,8 @@ export const uniqueAnimalEmojis = [
   '🐋'
 ];
 
+export const MAXIMUM_ALLOWED_PAIRS = uniqueAnimalEmojis.length;
+
 export const getAnimalNameByEmojiId = (animalId: number): string => {
   const emoji = uniqueAnimalEmojis[animalId];
   const animalName = Object.keys(animalEmojis).find(

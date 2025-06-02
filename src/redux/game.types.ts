@@ -13,6 +13,10 @@ export type GameStateType = {
 
   isGameOver: boolean;
   isGameStarted: boolean;
+  isTransitioning: boolean;
+  isPaused: boolean;
+
+  gameOverReason: 'out-of-time' | 'out-of-mistakes' | 'all-matched' | 'none';
 
   cards: Card[];
   flippedCardIndexes: number[];

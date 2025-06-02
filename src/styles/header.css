@@ -20,6 +20,11 @@
   cursor: pointer;
 }
 
+.game-header > img.disabled {
+  cursor: default;
+  opacity: 0.2;
+}
+
 /* menu */
 .menubar {
   display: flex;

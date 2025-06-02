@@ -2,7 +2,6 @@
   width: 100px;
   height: 150px;
   background: var(--white);
-  box-shadow: 0px 2px 1px var(--color-card-shadow);
   border-radius: 10px;
   position: relative;
   display: flex;
@@ -10,7 +9,6 @@
   justify-content: center;
   align-items: center;
   padding: 5px;
-  cursor: pointer;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -khtml-user-select: none;
@@ -20,16 +18,22 @@
   transform-style: preserve-3d;
 }
 
-/* backside */
+.card.matched {
+  cursor: default; /* Optional: remove pointer cursor */
+}
+
+.card.interactable:not(.matched) {
+  cursor: pointer;
+}
 
 .card .card-back {
   background: var(--color-white);
   position: relative;
-  width: 81px;
-  height: 130px;
+  width: 90px;
+  height: 140px;
 }
 
-.card svg {
+.card img {
   position: absolute;
   width: 81px;
   height: 130px;

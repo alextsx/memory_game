@@ -1,21 +1,33 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { AnimatePresence, motion } from 'framer-motion';
+import { usePrevious } from '@/hooks/usePrevious';
 import { Portal } from '@/hocs/Portal';
+import { togglePause } from '@/redux/game.slice';
 import { SettingsModalBody } from './SettingsModalBody';
 import { SettingsModalHeader } from './SettingsModalHeader';
 import { SettingsModalTrigger } from './SettingsModalTrigger';
 
 export const SettingsModal = () => {
+  const dispatch = useDispatch();
   const [isOpen, setIsOpen] = useState(false);
+  const prevIsOpen = usePrevious(isOpen);
 
   const handleClick = () => setIsOpen(!isOpen);
   const handleSave = () => {
     // Logic to save settings can be added here
     console.log('Settings saved');
-    setIsOpen(false);
+    //setIsOpen(false);
   };
+
+  //dispatch pause game action when modal is opened
+  useEffect(() => {
+    if (prevIsOpen === undefined) return; //initial render
+    if (prevIsOpen === isOpen) return; //nothing changed
+    dispatch(togglePause());
+  }, [isOpen, dispatch, prevIsOpen]);
 
   //add event listener to close modal on escape key press
   useEffect(() => {

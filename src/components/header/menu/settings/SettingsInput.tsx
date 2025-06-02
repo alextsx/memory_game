@@ -1,22 +1,21 @@
-import { ChangeEvent, InputHTMLAttributes } from 'react';
-import { useDebounceCallback } from 'usehooks-ts';
+'use client';
+
+import { InputHTMLAttributes } from 'react';
+import { cn } from '@/utils/cn';
+import { SettingsStateType } from '@/redux/settings.types';
 
 type SettingsInputType = {
   label: string;
-  id: string;
+  id: keyof SettingsStateType;
+  error?: string;
 } & InputHTMLAttributes<HTMLInputElement>;
 
-export const SettingsInput = ({ label, id, ...props }: SettingsInputType) => {
-  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-    console.log('Input changed:', e.target.value);
-  };
-
-  const debouncedHandleInputChange = useDebounceCallback(handleInputChange, 300);
-
+export const SettingsInput = ({ label, id, error, ...props }: SettingsInputType) => {
   return (
-    <div className="settings-option">
+    <div className={cn('settings-option', !!error && 'error')}>
       <label htmlFor={id}>{label}</label>
-      <input id={id} onChange={debouncedHandleInputChange} {...props} />
+      <input id={id} {...props} />
+      {!!error && <span className="error-label">{error}</span>}
     </div>
   );
 };

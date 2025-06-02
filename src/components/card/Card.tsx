@@ -2,27 +2,29 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
+import { cn } from '@/utils/cn';
 import { CardBack } from './CardBack';
 import { CardFront } from './CardFront';
 
 type CardProps = {
-  animalId: number;
+  emojiId: number;
+  isFlipped: boolean;
+  onClick: () => void;
+  className?: string;
 };
 
-//TODO card styling is not right, the back card isnt centered as expected
-export const Card = ({ animalId }: CardProps) => {
-  const [isFlipped, setIsFlipped] = useState(false);
+export const Card = ({ emojiId, isFlipped, onClick, className }: CardProps) => {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
     <motion.div
-      onClick={() => setIsFlipped(!isFlipped)}
+      onClick={onClick}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      className="card"
+      className={cn('card', className)}
       animate={{
         rotateY: isFlipped ? 180 : 0,
-        boxShadow: isHovered ? '0 1px 4px rgba(0, 0, 0, 0.2)' : 'none'
+        boxShadow: isHovered ? '0 2px 15px rgba(0, 0, 0, 0.2)' : '  0px 2px 1px rgba(0, 0, 0, 0.15)'
       }}
       initial={{ rotateY: 0 }}
       transition={{ duration: 0.4 }}
@@ -34,7 +36,7 @@ export const Card = ({ animalId }: CardProps) => {
 
       {/* Front Card (shows after flip) */}
       <div className="card-flip">
-        <CardFront animalId={animalId} />
+        <CardFront animalId={emojiId} />
       </div>
     </motion.div>
   );

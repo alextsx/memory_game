@@ -1,8 +1,12 @@
-const CountdownTimer = ({ secondsLeft }: { secondsLeft: number }) => {
-  return <div className="timer">{secondsLeft}</div>;
+'use client';
+
+import { useSelector } from 'react-redux';
+import { selectMatches, selectMistakes, selectTimeLeft } from '@/redux/game.slice';
+
+const CountdownTimer = ({ timeLeft }: { timeLeft: number }) => {
+  return <div className="timer">{timeLeft}</div>;
 };
 
-//component for displaying matches found and mistakes made
 const MatchesAndMistakes = ({ matches, mistakes }: { matches: number; mistakes: number }) => {
   return (
     <div className="matches-mistakes_container">
@@ -13,10 +17,14 @@ const MatchesAndMistakes = ({ matches, mistakes }: { matches: number; mistakes: 
 };
 
 export const GameInfo = () => {
+  const matches = useSelector(selectMatches);
+  const mistakes = useSelector(selectMistakes);
+  const timeLeft = useSelector(selectTimeLeft); // You'll need to add this selector
+
   return (
     <div className="game-info">
-      <CountdownTimer secondsLeft={60} />
-      <MatchesAndMistakes matches={9} mistakes={3} />
+      <CountdownTimer timeLeft={timeLeft} />
+      <MatchesAndMistakes matches={matches} mistakes={mistakes} />
     </div>
   );
 };

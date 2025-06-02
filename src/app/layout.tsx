@@ -7,6 +7,7 @@ import '@/styles/card.css';
 import '@/styles/game-board.css';
 import '@/styles/header.css';
 import '@/styles/modal.css';
+import '@/styles/alert.css';
 
 export const metadata: Metadata = {
   title: 'Memo mission',

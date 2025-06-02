@@ -1,0 +1,32 @@
+.alert {
+  position: fixed;
+  bottom: 2rem;
+  right: 1rem;
+  width: 25rem;
+  height: 6rem;
+  padding: 0.5rem;
+  text-align: left;
+  padding-left: 1.25rem;
+  z-index: 99;
+}
+
+@media (max-width: 860px) {
+  .alert {
+    right: 1rem;
+    top: 1rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .alert {
+    right: 1rem;
+    top: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .alert {
+    right: 0.5rem;
+    top: 0.5rem;
+  }
+}

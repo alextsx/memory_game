@@ -6,11 +6,10 @@ import { cn } from '@/utils/cn';
 
 /* 
 taken from shadcn/ui, ill use it for my alertbox component
-
 */
 
 const alertVariants = cva(
-  'absolute bottom-8 right-4 w-[400px] border p-2 text-left pl-5 [&>svg~*]:pl-7 [&>svg+div]:translate-y-[-3px] [&>svg]:absolute [&>svg]:left-4 [&>svg]:top-4',
+  'alert [&>svg~*]:pl-7 [&>svg+div]:translate-y-[-3px] [&>svg]:absolute [&>svg]:left-4 [&>svg]:top-4',
   {
     variants: {
       variant: {

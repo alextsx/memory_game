@@ -1,3 +1,4 @@
+/* Default for large screens */
 .game-board {
   display: flex;
   flex-direction: row;
@@ -7,9 +8,33 @@
   align-content: center;
   padding: 75px 25px;
   gap: 20px;
-
   width: 1080px;
-
   background: var(--gray-light);
   border-radius: 50px;
+}
+
+/* For screens 860px or under */
+@media screen and (max-width: 860px) {
+  .game-board {
+    width: 760px;
+    padding: 50px;
+    gap: 10px;
+  }
+}
+
+/* For screens 640px or under */
+@media screen and (max-width: 640px) {
+  .game-board {
+    width: 540px;
+    padding: 50px;
+    gap: 10px;
+  }
+}
+
+/* For screens 480px or under */
+@media screen and (max-width: 480px) {
+  .game-board {
+    width: 380px;
+    padding: 35px 25px;
+  }
 }

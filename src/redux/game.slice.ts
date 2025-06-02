@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSelector, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { AlertBoxVariants } from '@/components/AlertBox';
 import { generateCards } from '@/utils/card-utils';
 import { GameStateType } from './game.types';
@@ -70,11 +70,15 @@ const isBoardLocked = (state: GameStateType): boolean => {
 export const selectMatches = (state: RootState) => state.game.matches;
 export const selectMistakes = (state: RootState) => state.game.mistakes;
 export const selectCards = (state: RootState) => state.game.cards;
-export const selectGameStatus = (state: RootState) => ({
-  isGameOver: state.game.isGameOver,
-  isGameStarted: state.game.isGameStarted,
-  gameOverReason: state.game.gameOverReason
-});
+//need to memoize this because it went into rerender loop
+export const selectGameStatus = createSelector(
+  (state: RootState) => state.game,
+  (game: GameStateType) => ({
+    isGameOver: game.isGameOver,
+    isGameStarted: game.isGameStarted,
+    gameOverReason: game.gameOverReason
+  })
+);
 export const selectFlippedCardIndexes = (state: RootState) => state.game.flippedCardIndexes;
 export const selectTimeLeft = (state: RootState) => state.game.timeLeft;
 export const selectGameOverReason = (state: RootState) => state.game.gameOverReason;

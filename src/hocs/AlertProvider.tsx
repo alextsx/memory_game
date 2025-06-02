@@ -1,6 +1,14 @@
 'use client';
 
-import { createContext, PropsWithChildren, useContext, useEffect, useRef, useState } from 'react';
+import {
+  createContext,
+  PropsWithChildren,
+  useCallback,
+  useContext,
+  useEffect,
+  useRef,
+  useState
+} from 'react';
 import { AlertBox, AlertBoxProps, AlertBoxVariants } from '@/components/AlertBox';
 import { Portal } from './Portal';
 
@@ -43,7 +51,8 @@ export const AlertProvider = ({ children }: PropsWithChildren) => {
     };
   }, [timeoutRef]);
 
-  const show = ({ message, title, variant }: AlertBoxProps) => {
+  //need to memoize this because the useEffect will go into an infinite loop if we don't
+  const show = useCallback(({ message, title, variant }: AlertBoxProps) => {
     if (timeoutRef.current) {
       clearTimeout(timeoutRef.current);
       timeoutRef.current = null;
@@ -54,7 +63,7 @@ export const AlertProvider = ({ children }: PropsWithChildren) => {
     timeoutRef.current = setTimeout(() => {
       hide();
     }, 2500);
-  };
+  }, []);
 
   const AlertBoxComponent = () => {
     if (!alert.visible || !alert.message || !alert.title) return null;

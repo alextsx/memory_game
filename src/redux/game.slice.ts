@@ -124,7 +124,6 @@ const reducers = {
   flipCard(state: GameStateType, action: PayloadAction<number>) {
     //if board is locked we dont allow flipping
     if (isBoardLocked(state)) {
-      console.warn('Cannot flip card, board is locked.');
       return;
     }
 
@@ -134,7 +133,6 @@ const reducers = {
 
     //if more than 2 cards are flipped, we dont allow flipping
     if (state.flippedCardIndexes.length >= 2) {
-      console.warn('Cannot flip more than 2 cards at once.');
       return;
     }
 
@@ -157,7 +155,6 @@ const reducers = {
     //this should never happen bc i have early returns in flipCard
     //but just in case
     if (firstIndex === secondIndex) {
-      console.warn('Cannot match the same card.');
       return;
     }
 

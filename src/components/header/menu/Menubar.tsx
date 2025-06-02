@@ -22,7 +22,13 @@ const ResetGameButton = () => {
   };
 
   return (
-    <div className="menubar-item" onClick={handleReset}>
+    <div
+      className="menubar-item"
+      onClick={handleReset}
+      role="button"
+      aria-label="Reset Game"
+      title="Reset Game"
+    >
       <FontAwesomeIcon icon={faRepeat} />
     </div>
   );

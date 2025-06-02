@@ -71,13 +71,14 @@ export const SettingsModal = () => {
       <AnimatePresence>
         {isOpen && (
           <Portal selector="modal-root">
-            <div className="modal">
+            <div className="modal" role="dialog" aria-modal="true">
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.2, ease: 'easeInOut' }}
                 className="modal-overlay"
+                data-testid="modal-overlay"
                 onClick={handleClick}
               />
               <motion.div

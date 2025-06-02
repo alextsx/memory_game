@@ -64,7 +64,12 @@ export const SettingsModalBody = ({ onSave }: { onSave: () => void }) => {
         error={errors.username?.message}
         {...register('username')}
       />
-      <button className="save-button" type="submit" disabled={Object.keys(errors).length > 0}>
+      <button
+        className="save-button"
+        type="submit"
+        role="button"
+        disabled={Object.keys(errors).length > 0}
+      >
         Save Settings
       </button>
     </form>

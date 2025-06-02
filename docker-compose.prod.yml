@@ -1,0 +1,8 @@
+services:
+  memogame-prod:
+    build:
+      context: .
+      target: production
+    ports:
+      - '80:80'
+    restart: unless-stopped

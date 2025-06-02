@@ -1,0 +1,13 @@
+services:
+  memogame-dev:
+    build:
+      context: .
+      target: development
+    volumes:
+      - .:/app
+      - /app/node_modules
+    ports:
+      - '3000:3000'
+    environment:
+      - NODE_ENV=development
+    command: npm run dev

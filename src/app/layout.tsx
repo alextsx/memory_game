@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { AlertProvider } from '@/hocs/AlertProvider';
 import { ReduxProvider } from '@/hocs/ReduxProvider';
 
 import '@/styles/globals.css';
@@ -20,7 +21,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="min-h-screen flex justify-center align-center">
-        <ReduxProvider>{children}</ReduxProvider>
+        <ReduxProvider>
+          <div id="modal-root" />
+          <div id="alert-box-root" />
+          <AlertProvider>{children}</AlertProvider>
+        </ReduxProvider>
       </body>
     </html>
   );

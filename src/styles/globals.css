@@ -10,6 +10,11 @@
     --color-card-shadow: rgba(0, 0, 0, 0.15);
 
     --bs-red: #ff3f56;
+
+    --destructive: #ff0000;
+    --destructive-foreground: #000000;
+    --constructive: #22c55e;
+    --constructive-foreground: #052e16;
   }
 
   /* fonts */

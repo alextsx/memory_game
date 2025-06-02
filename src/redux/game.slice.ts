@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { AlertBoxVariants } from '@/components/AlertBox';
 import { generateCards } from '@/utils/card-utils';
 import { GameStateType } from './game.types';
 import { settingsInitialState } from './settings.slice';
@@ -6,6 +7,30 @@ import { SettingsStateType } from './settings.types';
 import { RootState } from './store';
 
 const { allowedMistakes, username } = settingsInitialState;
+
+export const gameOverMessages: {
+  [key in Exclude<GameStateType['gameOverReason'], 'none'>]: {
+    message: (username: string) => string;
+    title: string;
+    variant: AlertBoxVariants;
+  };
+} = {
+  'out-of-time': {
+    message: (username) => `${username}, time is up! 😢`,
+    title: 'Game Over',
+    variant: 'destructive'
+  },
+  'out-of-mistakes': {
+    message: (username) => `${username}, you made too many mistakes. 😞`,
+    title: 'Game Over',
+    variant: 'destructive'
+  },
+  'all-matched': {
+    message: (username) => `${username}, congratulations! All cards matched! 🎉`,
+    title: 'You Win!',
+    variant: 'constructive'
+  }
+};
 
 const initialState: GameStateType = {
   matches: 0,
@@ -47,7 +72,8 @@ export const selectMistakes = (state: RootState) => state.game.mistakes;
 export const selectCards = (state: RootState) => state.game.cards;
 export const selectGameStatus = (state: RootState) => ({
   isGameOver: state.game.isGameOver,
-  isGameStarted: state.game.isGameStarted
+  isGameStarted: state.game.isGameStarted,
+  gameOverReason: state.game.gameOverReason
 });
 export const selectFlippedCardIndexes = (state: RootState) => state.game.flippedCardIndexes;
 export const selectTimeLeft = (state: RootState) => state.game.timeLeft;

@@ -7,7 +7,6 @@ import { Header } from '@/components/header/Header';
 const MemoryGame = () => {
   return (
     <>
-      <div id="modal-root" />
       <div className="flex flex-col items-center justify-center gap-[30px] p-[50px] pt-[30px]">
         <Header />
         <GameBoard />

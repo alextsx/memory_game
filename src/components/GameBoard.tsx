@@ -3,14 +3,17 @@
 import { useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { cn } from '@/utils/cn';
+import { useAlert } from '@/hocs/AlertProvider';
 import {
   clearFlippedCards,
   flipCard,
+  gameOverMessages,
   resetGame,
   selectCards,
   selectFlippedCardIndexes,
   selectGameStatus,
   selectIsBoardLocked,
+  selectUsername,
   setTransitioning,
   updateTimer
 } from '@/redux/game.slice';
@@ -21,8 +24,11 @@ const GameBoard = () => {
   const dispatch = useDispatch();
   const cards = useSelector(selectCards);
   const settings = useSelector(selectSettings);
+  const username = useSelector(selectUsername);
   const flippedCardIndexes = useSelector(selectFlippedCardIndexes);
-  const { isGameStarted } = useSelector(selectGameStatus);
+  const { show: showAlert } = useAlert();
+  const { isGameOver, isGameStarted, gameOverReason } = useSelector(selectGameStatus);
+
   const isBoardLocked = useSelector(selectIsBoardLocked);
 
   //timeout ref for clearing flipped cards, we do ref so we can clear it if the component unmounts
@@ -72,6 +78,20 @@ const GameBoard = () => {
     //every check happens in the redux slice, so we just dispatch the action
     dispatch(flipCard(index));
   };
+
+  //if game is over  we display messages
+  useEffect(() => {
+    if (!isGameOver) return;
+    if (gameOverReason === 'none') return; //game hasnt started yet
+
+    const { message, title, variant } = gameOverMessages[gameOverReason];
+
+    showAlert({
+      message: message(username),
+      title,
+      variant
+    });
+  }, [isGameOver, gameOverReason, showAlert, username]);
 
   return (
     <main className="game-board">
